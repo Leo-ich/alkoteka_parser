@@ -11,13 +11,14 @@
 ## Установка
 ### Из GitHub
 ```
-pip install git+https://github.com/Leo-ich/alkoteka_parser.git
+git clone https://github.com/Leo-ich/alkoteka_parser.git
+cd alkoteka_parser
+pip install -r requirements.txt
 ```
 
 ## Использование
 ### Как Scrapy project
 ```
-cd alkoteka_parser
 scrapy crawl alkoteka -O result.json
 ```
 ### С пользовательскими настройками
