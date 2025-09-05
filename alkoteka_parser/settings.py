@@ -75,8 +75,8 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    # 'alkoteka_parser.pipelines.ValidationPipeline': 200,
-    # 'alkoteka_parser.pipelines.DataCleaningPipeline': 300,
+    'alkoteka_parser.pipelines.ValidationPipeline': 200,
+    'alkoteka_parser.pipelines.DataCleaningPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
