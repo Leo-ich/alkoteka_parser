@@ -63,7 +63,10 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,  # Отключаем стандартный
+    'alkoteka_parser.middlewares.RotateUserAgentMiddleware': 300,  # Добавляем ротацию UA
     'alkoteka_parser.middlewares.ProxyMiddleware': 350,
+    # 'scrapy.downloadermiddlewares.retry.RetryMiddleware': 90,  # Важно для прокси
 #    "alkoteka_parser.middlewares.AlkotekaParserDownloaderMiddleware": 543,
 }
 
@@ -137,8 +140,8 @@ PROXY_ENDPOINT = ''  # For services with automatic IP rotation
 PROXY_AUTH = ''  # 'username:password' if needed
 PROXY_LIST = [
     # Add your proxy list here
-    # 'http://185.236.203.208:3128',
-    # 'http://188.166.252.135:8080',
+    'http://62.84.120.61:80',
+    'https://89.188.110.196:8080',
 ]
 
 USER_AGENTS = [
