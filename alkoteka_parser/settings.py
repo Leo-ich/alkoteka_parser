@@ -63,6 +63,10 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,  # Отключаем стандартный
+    'alkoteka_parser.middlewares.RotateUserAgentMiddleware': 300,  # Добавляем ротацию UA
+    'alkoteka_parser.middlewares.ProxyMiddleware': 350,
+    # 'scrapy.downloadermiddlewares.retry.RetryMiddleware': 90,  # Важно для прокси
 #    "alkoteka_parser.middlewares.AlkotekaParserDownloaderMiddleware": 543,
 }
 
@@ -131,10 +135,17 @@ PARSE_PRODUCT_DETAILS = True  # Whether to visit product pages for additional da
 # Proxy settings (optional)
 PROXY_ENABLED = False  # Set to True to enable proxy
 PROXY_MODE = 'rotating'  # 'rotating' or 'single'
+PROXY_LIST_FILE = 'proxy_list.txt'
 PROXY_ENDPOINT = ''  # For services with automatic IP rotation
 PROXY_AUTH = ''  # 'username:password' if needed
 PROXY_LIST = [
     # Add your proxy list here
-    # 'http://proxy1:port',
-    # 'http://proxy2:port',
+    'http://62.84.120.61:80',
+    'https://89.188.110.196:8080',
+]
+
+USER_AGENTS = [
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
 ]
